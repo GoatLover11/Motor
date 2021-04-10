@@ -3,7 +3,7 @@ import math
 Pnmax = 79000
 nPmax = 90
 Mmax = 157
-nMmax = 63.333
+nMmax = 63.3333
 m = 1000
 mmax = 1495
 ik = []
@@ -24,9 +24,13 @@ nű = 0.91
 redáll = 1.05
 alfa = math.radians(math.atan(15 / 100))
 tap = 0.8
-#kerék sugár
-rk = 381 / 2
 g = 9.81
+
+print('1.')
+rk = 270
+print('rk: ', rk)
+
+file = open("dat.txt", "a")
 
 print('2.')
 MPmax = Pnmax / (2 * math.pi * nPmax)
@@ -57,11 +61,17 @@ print('Fe: ', Fe)
 print()
 
 for i in ik:
+    print('fokozat: ', ik.index(i) + 1)
+
     Vkm = (rk * 2 * math. pi * nMmax) / (i0 * i)
     Vkp = (rk * 2 * math. pi * nPmax) / (i0 * i)
 
     print('Vk (M): ', Vkm)
     print('Vk (P): ', Vkp)
+
+    #km/h to m/s
+    Vkm *= 0.27777
+    Vkp *= 0.27777
 
     FkM = (Mmax * i0 * i * nű) / rk
     FkP = (MPmax * i0 * i * nű) / rk
@@ -86,9 +96,11 @@ for i in ik:
     print()
 
     print('Dinamika: ', (FkP - FlegP) / m * g)
+    print()
+    print()
 
 
 print()
-
+file.close()
 
 
